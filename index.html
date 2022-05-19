@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tron Convert Tool</title>
+
+    <link
+      href="http://cdn.bootcss.com/tether/1.3.6/css/tether.min.css"
+      rel="stylesheet"
+    />
+    <script src="http://cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+
+    <link href="bootstrap.min.css" rel="stylesheet" />
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <link href="style.css?v=1" rel="stylesheet" />
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row card-body">
+        <div class="col-md-12">
+          <h3 class="card-title text-center p-5">Tron Convert Tool</h3>
+          <div class="tabbable" id="tabs-495720">
+            <ul class="nav nav-pills justify-content-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link active show"
+                  href="#panel-47438"
+                  data-toggle="tab"
+                >
+                  Base64_HexString</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#panel-551622" data-toggle="tab">
+                  Base58Check_HexString</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#panel-551623" data-toggle="tab">
+                  PubKey_Address</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#panel-551624" data-toggle="tab">
+                  PriKey_PubKey_Address
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#panel-551625" data-toggle="tab">
+                  Mainnet_Testnew_Address
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content text-center">
+              <div class="tab-pane active show" id="panel-47438">
+                <form id="form1" name="form1" method="post" action="">
+                  <br />
+                  <p class="medium">Base64</p>
+                  <textarea
+                    name="base64"
+                    id="base64"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <br />
+                  <input
+                    onclick="do64Encode();"
+                    type="button"
+                    value="Encode"
+                    name="encode"
+                    class="button btn btn-success"
+                  />
+                  <input
+                    onclick="do64Decode();"
+                    type="button"
+                    value="Decode"
+                    name="decode"
+                    class="button btn btn-danger"
+                  />
+                  <p class="medium">Ascii(HexString)</p>
+                  <textarea
+                    name="ascii"
+                    id="ascii"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                </form>
+              </div>
+              <div class="tab-pane" id="panel-551622">
+                <form id="form2" name="form2" method="post" action="">
+                  <br />
+                  <p class="medium">Base58</p>
+                  <textarea
+                    name="base58"
+                    id="base58"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <br />
+                  <input
+                    onclick="do58Encode();"
+                    type="button"
+                    value="Encode"
+                    name="encode"
+                    class="button btn btn-success"
+                  />
+                  <input
+                    onclick="do58Decode();"
+                    type="button"
+                    value="Decode"
+                    name="decode"
+                    class="button btn btn-danger"
+                  />
+                  <p class="medium">Ascii(HexString)</p>
+                  <textarea
+                    name="ascii"
+                    id="ascii1"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                </form>
+              </div>
+
+              <div class="tab-pane" id="panel-551623">
+                <form id="form3" name="form3" method="post" action="">
+                  <br />
+                  <p>
+                    <input type="radio" name="net0" value="mainnet" checked />
+                    Main Net
+                    <input
+                      type="radio"
+                      name="net0"
+                      value="testnet"
+                      style="margin-left: 30px"
+                    />
+                    Test Net
+                  </p>
+                  <p class="medium">PubKey</p>
+                  <textarea
+                    name="pubkey"
+                    id="pubkey"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <br />
+                  <input
+                    onclick="pubkey2Address();"
+                    type="button"
+                    value="Start"
+                    name="encode"
+                    class="button btn btn-success"
+                  />
+                  <p class="medium">Address(HexString)</p>
+                  <textarea
+                    name="addresshex"
+                    id="addresshex"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <p class="medium">Address(Base58Check)</p>
+                  <textarea
+                    name="address58"
+                    id="address58"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                </form>
+              </div>
+
+              <div class="tab-pane" id="panel-551624">
+                <form id="form4" name="form4" method="post" action="">
+                  <br />
+                  <p>
+                    <input type="radio" name="net1" value="mainnet" checked />
+                    Main Net
+                    <input
+                      type="radio"
+                      name="net1"
+                      value="testnet"
+                      style="margin-left: 30px"
+                    />
+                    Test Net
+                  </p>
+                  <p class="medium">PriKey</p>
+                  <textarea
+                    name="prikey"
+                    id="prikey"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <br />
+                  <input
+                    onclick="prikey2Address();"
+                    type="button"
+                    value="Start"
+                    name="encode"
+                    class="button btn btn-success"
+                  />
+                  <p class="medium">PubKey</p>
+                  <textarea
+                    name="pubkey"
+                    id="pubkey1"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <p class="medium">Address(HexString)</p>
+                  <textarea
+                    name="addresshex"
+                    id="addresshex1"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <p class="medium">Address(Base58Check)</p>
+                  <textarea
+                    name="address58"
+                    id="address581"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                </form>
+              </div>
+
+              <div class="tab-pane" id="panel-551625">
+                <form id="form5" name="form5" method="post" action="">
+                  <br />
+                  <p class="medium">Mainnet</p>
+                  <textarea
+                    name="mainaddress"
+                    id="mainaddress"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                  <br />
+                  <input
+                    onclick="main2test();"
+                    type="button"
+                    value="Main2Test"
+                    name="encode"
+                    class="button btn btn-success"
+                  />
+                  <input
+                    onclick="test2main();"
+                    type="button"
+                    value="Test2Main"
+                    name="decode"
+                    class="button btn btn-danger"
+                  />
+                  <p class="medium">Testnet</p>
+                  <textarea
+                    name="testaddress"
+                    id="testaddress"
+                    rows="6"
+                    class="w-100 form-control"
+                  ></textarea>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
